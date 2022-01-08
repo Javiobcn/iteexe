@@ -98,9 +98,12 @@ display them as links in your content. From here you can edit the bookmarks and 
         Load the rss
         """
         content = ""
+        log.info("Loading RSS")
         try:
             rssDic = feedparser.parse(url)
             length = len(rssDic['entries'])
+            log.info("Url RSS: %s"%(url))
+            log.info("Entries: %s"%(length))
             if length > 0 :
                 content += "<ul>"
                 for i in range(0, length):
@@ -108,7 +111,7 @@ display them as links in your content. From here you can edit the bookmarks and 
                         rssDic['entries'][i].link, rssDic['entries'][i].title)  
                 content += "</ul>"
         except IOError, error:
-            log.warning(unicode(error))
+            log.error(unicode(error))
             content += _(u"Unable to load RSS feed from %s <br/>Please check the spelling and connection and try again.") % url
             
         if content == "":
@@ -121,6 +124,7 @@ display them as links in your content. From here you can edit the bookmarks and 
         #  such that these extra set's are not necessary, but for now, here:)
         self.rss.content_w_resourcePaths = self.rss.content
         self.rss.content_wo_resourcePaths = self.rss.content
+        log.info("End loading RSS")
 
     def burstHTML(self, i):
         """
