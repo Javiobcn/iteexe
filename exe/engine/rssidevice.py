@@ -21,6 +21,7 @@
 """
 An RSS Idevice is one built from a RSS feed.
 """
+import logging
 
 import re
 
@@ -29,6 +30,7 @@ from exe.engine.idevice       import Idevice
 from exe.engine.field         import TextAreaField
 from exe.engine.translate     import lateTranslate
 
+log = logging.getLogger(__name__)
 
 # ===========================================================================
 class RssIdevice(Idevice):
