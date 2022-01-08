@@ -110,10 +110,9 @@ display them as links in your content. From here you can edit the bookmarks and 
                     content += '<li><a href="%s">%s</a></li>' %(
                         rssDic['entries'][i].link, rssDic['entries'][i].title)  
                 content += "</ul>"
-        except IOError, error:
+        except Exception, error:
             log.error(unicode(error))
             content += _(u"Unable to load RSS feed from %s <br/>Please check the spelling and connection and try again.") % url
-            
         if content == "":
             content += _(u"Unable to load RSS feed from %s <br/>Please check the spelling and connection and try again.") % url
         self.rss.content = unicode(content)
