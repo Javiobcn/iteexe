@@ -32,9 +32,7 @@ import traceback
 import shutil
 import tempfile
 import base64
-import certifi
 import ssl
-import httplib2
 from exe.engine.version          import release, revision
 from twisted.internet            import threads, reactor, defer
 from exe.webui.livepage          import RenderableLivePage,\

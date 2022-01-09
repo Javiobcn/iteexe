@@ -22,7 +22,7 @@
 An RSS Idevice is one built from a RSS feed.
 """
 import logging
-
+import requests
 import re
 
 import feedparser
@@ -98,9 +98,18 @@ display them as links in your content. From here you can edit the bookmarks and 
         Load the rss
         """
         content = ""
+        
         log.info("Loading RSS")
         try:
-            rssDic = feedparser.parse(url)
+            rssDic = []
+            headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:50.0) Gecko/20100101 Firefox/50.0'}
+            response = requests.get(url, timeout=10, headers=headers)
+            statuscode = response.status_code
+            if statuscode == 200:
+                rssDic = feedparser.parse(response.text)
+            
+            #result = parseRSS(rss['entries'])
+            #rssDic = feedparser.parse(url)
             length = len(rssDic['entries'])
             log.info("Url RSS: %s"%(url))
             log.info("Entries: %s"%(length))
