@@ -6,8 +6,8 @@ jobs:
   build-snap:
     runs-on: ubuntu-latest
     steps:
-     - name: Checkout
-        uses: actions/checkout@v2
+      - name: Checkout
+      - uses: actions/checkout@v2
       - name: rename template to snapcraft.yaml
         run: |
           ls -larth
