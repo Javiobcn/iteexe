@@ -6,12 +6,13 @@ jobs:
   build-snap:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    name: rename template to snapcraft.yaml
-        run: |
-          cp ./snap/snapcraft.yaml_template ./snap/snapcraft.yaml
-    - uses: snapcore/action-build@v1
-    - uses: actions/upload-artifact@v2
-      with:
-        name: snap
-        path: ${{ steps.snapcraft.outputs.snap }}
+      name: rename template to snapcraft.yaml
+          run: |
+            cp ./snap/snapcraft.yaml_template ./snap/snapcraft.yaml
+      - uses: actions/checkout@v2
+      
+      - uses: snapcore/action-build@v1
+      - uses: actions/upload-artifact@v2
+        with:
+          name: snap
+          path: ${{ steps.snapcraft.outputs.snap }}
