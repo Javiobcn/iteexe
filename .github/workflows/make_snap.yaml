@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       name: rename template to snapcraft.yaml
-          run: |
-            cp ./snap/snapcraft.yaml_template ./snap/snapcraft.yaml
+      run: |
+        cp ./snap/snapcraft.yaml_template ./snap/snapcraft.yaml
       - uses: actions/checkout@v2
       
       - uses: snapcore/action-build@v1
