@@ -9,6 +9,7 @@ jobs:
       - name: rename template to snapcraft.yaml
         run: |
           pwd
+          ls
           cp snap/snapcraft.yaml_template snap/snapcraft.yaml
           uses: actions/checkout@v2
       - uses: snapcore/action-build@v1
