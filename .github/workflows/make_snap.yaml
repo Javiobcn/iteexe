@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        id: snapcraft
         uses: actions/checkout@v2
       - name: rename template to snapcraft.yaml
         run: |
@@ -15,4 +16,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: snap
-          path: ${{steps.Checkout.outputs.snap }}
+          path: ${{steps.snapcraft.outputs.snap }}
